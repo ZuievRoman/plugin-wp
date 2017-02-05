@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: romansolomashenko
+ * Date: 16.01.17
+ * Time: 6:53 PM
+ */
+namespace includes;
+
+use includes\common\SSLoader;
+
+
+class SSPlugin
+{
+    private static $instance = null;
+    private function __construct() {
+        SSLoader::getInstance();
+    }
+    public static function getInstance() {
+
+        if ( null == self::$instance ) {
+            self::$instance = new self;
+        }
+
+        return self::$instance;
+
+    }
+
+    static public function activation()
+    {
+        // debug.log
+        error_log('plugin '.SS_PlUGIN_NAME.' activation');
+    }
+
+    static public function deactivation()
+    {
+        // debug.log
+        error_log('plugin '.SS_PlUGIN_NAME.' deactivation');
+    }
+
+}
+
+SSPlugin::getInstance();

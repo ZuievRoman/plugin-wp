@@ -6,6 +6,8 @@ Description: Plug-in for the signature of articles and publications
 Version: 1.0
 Author: Roman Zuiev
 Author URI: https://ua.linkedin.com/in/roman-zuiev-357268100
+Text Domain: signature-shortcodes
+Domain Path: /languages/
 
 License: A "Slug" license name e.g. GPL2
     Copyright 2017  Copyright 2017  Roman Zuiev  (email: zuevro@gmail.com)
@@ -24,6 +26,16 @@ License: A "Slug" license name e.g. GPL2
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+require_once plugin_dir_path(__FILE__) . '/config-path.php';
+require_once SS_PlUGIN_DIR.'/includes/common/SSAutoload.php';
+require_once SS_PlUGIN_DIR.'/includes/SSPlugin.php';
+
+
+register_activation_hook( __FILE__, array('includes\SSPlugin' ,  'activation' ) );
+register_deactivation_hook( __FILE__, array('includes\SSPlugin' ,  'deactivation' ) );
+
+
+
 
 function signatureShortcode() {
     ob_start(); ?>
